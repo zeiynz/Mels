@@ -42,7 +42,7 @@
 }
 
 :root {
-  --background: #000000;
+  --background: #111111;
   --foreground: #ffffff;
 
   --card: #080808;
@@ -73,7 +73,7 @@
 }
 
 .dark {
-  --background: #000000;
+  --background: #111111;
   --foreground: #ffffff;
 
   --card: #080808;

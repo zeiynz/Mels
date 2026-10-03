@@ -20,7 +20,7 @@ export default function Footer() {
                 className="relative flex w-full items-center justify-center"
             >
                 <h1 className="text-[25vw] leading-[0.8] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-foreground/10 via-foreground/5 to-transparent">
-                    SCALE
+                    UMMAH
                 </h1>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
@@ -35,6 +35,30 @@ export default function Footer() {
                         className="transition-colors duration-300 hover:text-foreground"
                     >
                         Threads
+                    </Link>
+                    <Link
+                        href="https://www.youtube.com/@iamzeiyn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors duration-300 hover:text-foreground"
+                    >
+                        YouTube
+                    </Link>
+                    <Link
+                        href="https://www.linkedin.com/in/zeiyn/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors duration-300 hover:text-foreground"
+                    >
+                        Linkedin
+                    </Link>
+                    <Link
+                        href="https://www.instagram.com/iamzeiyn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors duration-300 hover:text-foreground"
+                    >
+                        Instagram
                     </Link>
                 </div>
 
