@@ -1,93 +1,87 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { Navbar } from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-const SITE_URL = "https://muslimpreneur.netlify.app";
-const SITE_NAME = "Muslimpreneur";
-const TITLE = "Muslimpreneur - The Launch System for Muslim Entrepreneurs";
-const DESCRIPTION =
-  "A complete Notion system, SOPs, and frameworks for Muslim founders in the US and EU starting their first business. Built from real experience, not generic templates.";
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: { default: TITLE, template: `%s — ${SITE_NAME}` },
-  description: DESCRIPTION,
+  metadataBase: new URL("https://muslimpreneur.netlify.app"),
+
+  title: {
+    default: "Muslimpreneur — The Launch System for Muslim Entrepreneurs",
+    template: "%s — Muslimpreneur",
+  },
+
+  description:
+    "A complete launch system, SOPs, and frameworks for Muslim entrepreneurs building their first business.",
+
   keywords: [
-    "muslim entrepreneur",
-    "muslim entrepreneur launch system",
-    "muslim business system",
-    "halal business framework",
-    "muslim founder playbook",
-    "notion system for entrepreneurs",
+    "Muslim entrepreneur",
+    "Muslim founder",
+    "halal business",
+    "Muslim business",
+    "entrepreneurship",
   ],
-  authors: [{ name: "Zeiyn", url: SITE_URL }],
-  alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+
+  authors: [{ name: "Zeiyn" }],
+
   openGraph: {
     type: "website",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    siteName: "Muslimpreneur",
+    title: "Muslimpreneur — The Launch System for Muslim Entrepreneurs",
+    description:
+      "A complete launch system, SOPs, and frameworks for Muslim entrepreneurs building their first business.",
+    images: ["/og-image.png"],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
+    title: "Muslimpreneur — The Launch System for Muslim Entrepreneurs",
+    description:
+      "A complete launch system, SOPs, and frameworks for Muslim entrepreneurs building their first business.",
     images: ["/og-image.png"],
-    creator: "@iamzeiyn",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  colorScheme: "dark",
+  themeColor: "#000000",
 };
 
-// Structured data so Google can render this as a Product/Organization rich result.
-// Keep in sync with SITE_URL/SITE_NAME/DESCRIPTION above — no separate source of truth.
-function JsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": `${SITE_URL}/#org`,
-        name: SITE_NAME,
-        url: SITE_URL,
-        sameAs: ["https://instagram.com/iamzeiyn", "https://www.threads.com/@iamzeiyn"],
-      },
-      {
-        "@type": "Product",
-        name: "Muslim Entrepreneur Launch System",
-        description: DESCRIPTION,
-        brand: { "@id": `${SITE_URL}/#org` },
-        offers: { "@type": "Offer", priceCurrency: "USD", availability: "https://schema.org/InStock" },
-      },
-    ],
-  };
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
-}
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}>
-      <head>
-        <JsonLd />
-      </head>
-      <body className="min-h-screen bg-background text-foreground">
-        <div className="flex min-h-screen flex-col">
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} dark`}
+    >
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <Navbar />
+
+        <main>{children}</main>
+
+        <Footer />
       </body>
     </html>
   );
