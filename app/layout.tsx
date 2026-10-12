@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { Navbar } from "@/components/layout/navbar";
+import { AnnouncementBar } from "@/components/ui/announcement-bar"
 import Footer from "@/components/layout/footer";
 
 import "./globals.css";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://muslimpreneur.netlify.app"),
 
   title: {
-    default: "Muslimpreneur — The Launch System for Muslim Entrepreneurs",
+    default: "Muslimpreneur - The Launch System for Muslim Entrepreneurs",
     template: "%s — Muslimpreneur",
   },
 
@@ -77,8 +77,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} dark`}
     >
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <Navbar />
-
+        <AnnouncementBar />
         <main>{children}</main>
 
         <Footer />
